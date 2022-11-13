@@ -9,9 +9,8 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
                                             write_only=True, label='Confirm password')
 
     class Meta:
-        model = User
-        fields = ['first_name', 'last_name', 'email', 'username',
-                  'password', 'confirmPassword', 'url', 'groups']
+        model = get_user_model()
+        fields = ['first_name', 'last_name', 'email', 'username', 'password', 'confirmPassword', 'url', 'groups']
         extra_kwargs = {
             'username': {'read_only': True},
             'first_name': {'required': True},
@@ -23,7 +22,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         }
 
     def create(self, validated_data):
-        user = User.objects.create_user(
+        user = get_user_model().objects.create_user(
             first_name=validated_data['first_name'],
             last_name=validated_data['last_name'],
             email=validated_data['email'],
