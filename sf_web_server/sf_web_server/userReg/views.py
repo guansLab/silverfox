@@ -1,16 +1,24 @@
-from django.contrib.auth.models import User, Group
-from rest_framework import viewsets
-from rest_framework import permissions
-from sf_web_server.userReg.serializers import UserSerializer, GroupSerializer
+from django.contrib.auth.models import Group
+from rest_framework import viewsets, permissions, generics, views
+from sf_web_server.userReg.serializers import RegisterSerializer, GroupSerializer, LoginSerializer
+from django.contrib.auth import get_user_model
+from rest_framework.response import Response
+from rest_framework import status
+from django.contrib.auth import login
 
 
-class UserViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows users to be viewed or edited.
-    """
-    queryset = User.objects.all().order_by('-date_joined')
-    serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticated]
+class RegisterView(generics.CreateAPIView):
+    queryset = get_user_model().objects.all()
+    serializer_class = RegisterSerializer
+
+
+class LoginView(views.APIView):
+    def post(self, request, format=None):
+        serializer = LoginSerializer(data=self.request.data, context={'request': self.request})
+        serializer.is_valid(raise_exception=True)
+        user = serializer.validated_data["user"]
+        login(request, user)
+        return Response(None, status=status.HTTP_202_ACCEPTED)
 
 
 class GroupViewSet(viewsets.ModelViewSet):
