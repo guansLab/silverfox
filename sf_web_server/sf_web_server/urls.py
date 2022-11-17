@@ -20,6 +20,10 @@ admin.site.site_header = "Silver Foxes Admin"
 admin.site.site_title = "Silver Foxes Admin Portal"
 admin.site.index_title = "Welcome to Silver Foxes Admin Portal"
 
+admin.site.site_header = "Silver Foxes Admin"
+admin.site.site_title = "Silver Foxes Admin Portal"
+admin.site.index_title = "Welcome to Silver Foxes Admin Portal"
+
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
