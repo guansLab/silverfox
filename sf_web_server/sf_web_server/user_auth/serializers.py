@@ -28,7 +28,7 @@ class LoginSerializer(serializers.Serializer):
         password = attrs.get('password')
 
         if username and password:
-            # Try to authenticate the user using Django auth framework.
+            # Try to authenticate the user using Django user_auth framework.
             user = authenticate(request=self.context.get('request'),
                                 username=username, password=password)
             if not user:

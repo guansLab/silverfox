@@ -1,6 +1,6 @@
 from django.contrib.auth.models import Group
 from rest_framework import viewsets, permissions, generics, views
-from sf_web_server.userReg.serializers import RegisterSerializer, GroupSerializer, LoginSerializer
+from sf_web_server.user_auth.serializers import RegisterSerializer, GroupSerializer, LoginSerializer
 from django.contrib.auth import get_user_model
 from rest_framework.response import Response
 from rest_framework import status
