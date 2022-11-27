@@ -32,6 +32,7 @@ class Content(models.Model):
     body = RichTextField(blank=True, null=True)
     post_date = models.DateField(auto_now_add=True)
     category = models.ForeignKey(ContentCategory, on_delete=models.CASCADE)
+    snippet = models.CharField(max_length=255)
     
     
     def __str__(self):
