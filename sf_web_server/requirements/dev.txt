@@ -3,3 +3,4 @@ Django==4.1.2
 djangorestframework==3.14.0
 pytz==2022.5
 sqlparse==0.4.3
+django_ckeditor==5.9.0
