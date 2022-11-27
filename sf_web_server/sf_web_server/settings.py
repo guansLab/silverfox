@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'sf_web_server.user_auth.apps.UserAuthConfig',
     'sf_web_server.content.apps.ContentConfig',
+    'ckeditor'
 ]
 
 MIDDLEWARE = [
