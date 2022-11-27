@@ -1,4 +1,6 @@
 from django.db import models
+from ckeditor.fields import RichTextField
+from django.contrib.auth import get_user_model
 
 
 class ContentCategory(models.Model):
@@ -22,3 +24,16 @@ class ContentCategory(models.Model):
     def save(self, **kwargs):
         self.clean()
         return super().save(**kwargs)
+
+class Content(models.Model):
+    title = models.CharField(max_length=255)
+    title_tag = models.CharField(max_length=255)
+    author = models.ForeignKey(get_user_model, on_delete=models.CASCADE)
+    body = RichTextField(blank=True, null=True)
+    post_date = models.DateField(auto_now_add=True)
+    category = models.ForeignKey(ContentCategory, on_delete=models.CASCADE)
+    
+    
+    def __str__(self):
+        return self.name
+    
