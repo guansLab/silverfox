@@ -1,3 +1,18 @@
-from django.shortcuts import render
+from rest_framework.viewsets import ModelViewSet
+from .models import ContentCategory, Content
+from .serializers import ContentCategorySerializer, ContentSerializer
+from .filters import ContentCategoryFilter
+import django_filters
 
-# Create your views here.
+
+class ContentCategoryViewSet(ModelViewSet):
+    queryset = ContentCategory.objects.all()
+    serializer_class = ContentCategorySerializer
+    filter_class = ContentCategoryFilter
+    filter_backends = (django_filters.rest_framework.DjangoFilterBackend, )
+
+
+class ContentViewSet(ModelViewSet):
+    queryset = Content.objects.all()
+    serializer_class = ContentSerializer
+

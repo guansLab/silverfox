@@ -34,9 +34,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
+    'django_filters',
+    'django_quill',
     'sf_web_server.user_auth.apps.UserAuthConfig',
     'sf_web_server.content.apps.ContentConfig',
-    'ckeditor'
 ]
 
 MIDDLEWARE = [
@@ -74,8 +75,12 @@ WSGI_APPLICATION = 'sf_web_server.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'kent_silver_foxes',
+        "USER": 'kent_silver_fox',
+        'PASSWORD': 'kent_silver_foxes',
+        "HOST": 'localhost',
+        'PORT': "5432"
     }
 }
 
