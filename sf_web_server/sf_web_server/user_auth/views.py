@@ -1,10 +1,8 @@
 from django.contrib.auth.models import Group
-from rest_framework import viewsets, permissions, generics, views
+from rest_framework import viewsets, permissions, generics, views, status
 from sf_web_server.user_auth.serializers import RegisterSerializer, GroupSerializer, LoginSerializer
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model, logout, login
 from rest_framework.response import Response
-from rest_framework import status
-from django.contrib.auth import login
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 
@@ -22,6 +20,15 @@ class LoginView(views.APIView):
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data["user"]
         login(request, user)
+        return Response(None, status=status.HTTP_202_ACCEPTED)
+
+
+class LogoutView(views.APIView):
+
+    def post(self, request):
+        if not request.user.is_authenticated:
+            return Response({'error': 'User not logged in'}, status=status.HTTP_400_BAD_REQUEST)
+        logout(request)
         return Response(None, status=status.HTTP_202_ACCEPTED)
 
 

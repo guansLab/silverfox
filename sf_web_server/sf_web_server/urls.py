@@ -1,6 +1,6 @@
 from django.urls import include, path
 from rest_framework import routers
-from sf_web_server.user_auth.views import GroupViewSet, LoginView, RegisterView
+from sf_web_server.user_auth.views import GroupViewSet, LoginView, RegisterView, LogoutView
 from sf_web_server.content.views import ContentCategoryViewSet, ContentViewSet
 from django.contrib import admin
 
@@ -18,6 +18,7 @@ admin.site.index_title = "Welcome to Silver Foxes Admin Portal"
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', LoginView.as_view(), name='login'),
+    path('logout/', LogoutView.as_view(), name='login'),
     path('register/', RegisterView.as_view(), name='register'),
     path('', include(router.urls)),
 ]
