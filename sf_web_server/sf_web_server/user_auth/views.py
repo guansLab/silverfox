@@ -5,6 +5,11 @@ from django.contrib.auth import get_user_model, logout, login
 from rest_framework.response import Response
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
+from django.shortcuts import render
+
+
+def index_view(request):
+    return render(request, 'build/index.html')
 
 
 @method_decorator(csrf_exempt, name='dispatch')
