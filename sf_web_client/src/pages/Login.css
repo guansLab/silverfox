@@ -61,7 +61,7 @@
     width: 80%;
   }
   button.primary {
-    background: #f58733;
+    background: rgb(200, 243, 220);
   }
   button.primary:hover {
     background: #ea6c0b;

@@ -16,10 +16,10 @@ function App() {
           <Route index element={<Homepage />} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
+          <Route path="resources" element={<Resources />} />
+          <Route path="about" element={<About />} />
+          <Route path="contact" element={<Contact />} />
         </Route>
-        <Route path="resources" element={<Resources />} />
-        <Route path="about" element={<About />} />
-        <Route path="contact" element={<Contact />} />
       </Routes>
     </BrowserRouter>
   );

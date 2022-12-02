@@ -1,11 +1,10 @@
-import React from "react";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 
 function Navbar() {
   return (
     <nav style=
     {{
-      position: "absolute", 
+      position: "relative", 
       width: "100%", 
       height: "20%",
       fontSize: "Larger"}}>
@@ -15,7 +14,7 @@ function Navbar() {
         margin: "0",
         padding: "10px",
       }}>
-        <li style={{display: "inline", padding: "10px", paddingRight: "70%"}}>
+        <li style={{display: "inline", padding: "10px", paddingRight: "77%"}}>
           FOX LOGO
         </li>
         <li style={{display: "inline", padding: "10px"}}>
@@ -29,6 +28,7 @@ function Navbar() {
         </li>
       </ul>
     </nav>
+    
   );
 }
 
