@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
@@ -59,7 +58,5 @@ sketch
 
 # and uncomment the following lines
 # .pnp.*
-=======
 **/**.pyc
 **/**.idea
->>>>>>> a83c637 (added .gitignore and minor linting changes)
