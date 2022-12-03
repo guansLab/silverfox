@@ -13,7 +13,7 @@
     margin-bottom: 50px;
   }
   .input-group > label,
-  .input-group > input {
+  .input-group .input-field {
     font-family: 'Roboto', sans-serif;
     max-width: 420px;
     text-align: left;
@@ -25,7 +25,7 @@
     margin-bottom: 5px;
     text-transform: uppercase;
   }
-  .input-group > input {
+  .input-group .input-field {
     background: #f2f2f5;
     border-radius: 4px;
     border: 1px solid #e5e5e5;
