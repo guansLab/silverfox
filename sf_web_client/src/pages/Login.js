@@ -2,37 +2,39 @@ import './Login.css';
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import axios from '../axios';
+import { connect } from "react-redux";
+import { login } from "../actions/session";
+import { useNavigate } from "react-router-dom";
 
-const LOGIN_URL = '/login/';
 
+const mapStateToProps = ({ errors }) => ({
+  errors
+});
+const mapDispatchToProps = dispatch => ({
+  login: user => dispatch(login(user))
+});
 
 const loginSchema = Yup.object().shape({
   email: Yup.string().email("Invalid Email address").required("Required"),
   password: Yup.string().min(8, "Must be 8 characters or more").required("Required"),
 });
 
-function Login() {
-  const handleSubmit = async (values) => {
-    try{
-      const response = await axios.post(LOGIN_URL,{
+const Login = ({errors, login}) => {
+  let nav = useNavigate();
+  const handleSubmit = (values) => {
+      const user = {
           username: values.email, 
           password: values.password,
-        },
-        {
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          withCredentials: false
         }
-      );
-      console.log(response.data);
-    }
-    catch(err){
-        console.log(JSON.stringify(err));
-        console.log("Registration Failed");
-    }
-    console.log(values);
+        login(user).then(
+          () => {
+            nav("/home");
+          }
+        ).catch(
+          (error) => {
+            alert(JSON.stringify(error.response.data));
+          }
+        );
   };
 
     return (
@@ -64,4 +66,7 @@ function Login() {
     );
   } 
 
-export default Login;
+  export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Login);

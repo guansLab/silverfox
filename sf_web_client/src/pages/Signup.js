@@ -2,11 +2,17 @@ import React from "react";
 import './Signup.css';
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import axios from '../axios';
+import { connect } from "react-redux";
+import { signup } from "../actions/session";
+import { useNavigate } from "react-router-dom";
 
 
-const REGISTER_URL = '/register/';
-
+const mapStateToProps = ({ errors }) => ({
+  errors
+});
+const mapDispatchToProps = dispatch => ({
+  signup: user => dispatch(signup(user))
+});
 
 const signupSchema = Yup.object().shape({
   email: Yup.string().email("Invalid Email address").required("Required"),
@@ -19,32 +25,20 @@ const signupSchema = Yup.object().shape({
 });
 
 
-function Signup() {
+const Signup = ({errors, signup}) => {
 
-  const handleSubmit = async (values) => {
-    try{
-      const response = await axios.post(REGISTER_URL,{
+  let nav = useNavigate();
+  const handleSubmit = (values) => {
+        const user = {
           email: values.email, 
           first_name: values.firstName,
           last_name: values.lastName,
           password: values.password,
           confirm_password: values.confirmPassword
-        },
-        {
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          withCredentials: false
         }
-      );
-      console.log(response.data);
-    }
-    catch(err){
-        console.log(JSON.stringify(err));
-        console.log("Registration Failed");
-    }
-    console.log(values);
-  };
+        signup(user);
+        nav('');
+    };
 
     return (
       <Formik
@@ -94,4 +88,7 @@ function Signup() {
     );
   } 
 
-export default Signup;
+  export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Signup);
