@@ -6,7 +6,7 @@ function Navbar2() {
             backgroundColor: "rgb(200, 243, 220)",
             width:"100%",
             height: "20%",
-            paddingLeft: "67%",
+            paddingLeft: "35%",
             paddingRight: "5%",
             fontSize: "larger",}}>
       <ul style=

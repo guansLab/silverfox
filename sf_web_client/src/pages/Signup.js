@@ -61,7 +61,7 @@ const Signup = ({errors, signup}) => {
             </div>
             <div className="input-group">
                 <label>
-                  Email: <Field type="email" name="email"  className="input-field" placeholder="sample@email.com"/>
+                  Email: <Field type="email" name="email"  className="input-field" placeholder="johndoe@email.com"/>
                 <ErrorMessage name="email" component="div" />
               </label>
             </div>
