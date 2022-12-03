@@ -46,7 +46,7 @@ class LoginSerializer(serializers.Serializer):
 
 class RegisterSerializer(serializers.HyperlinkedModelSerializer):
     confirm_password = serializers.CharField(min_length=5, required=True,
-                                            write_only=True, label='Confirm password')
+                                             write_only=True, label='Confirm password')
 
     class Meta:
         model = get_user_model()
