@@ -17,9 +17,9 @@ admin.site.index_title = "Welcome to Silver Foxes Admin Portal"
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
     path('', index_view, name='index'),
-    path('admin/', admin.site.urls),
-    path('login/', LoginView.as_view(), name='login'),
-    path('logout/', LogoutView.as_view(), name='login'),
-    path('register/', RegisterView.as_view(), name='register'),
-    path(r'app/', include(router.urls))
+    path('api/admin/', admin.site.urls),
+    path('api/login/', LoginView.as_view(), name='login'),
+    path('api/logout/', LogoutView.as_view(), name='login'),
+    path('api/register/', RegisterView.as_view(), name='register'),
+    path(r'api/', include(router.urls))
 ]
