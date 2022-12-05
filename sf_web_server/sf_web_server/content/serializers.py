@@ -3,7 +3,7 @@ from .models import ContentCategory, Content
 
 
 class ContentCategorySerializer(serializers.ModelSerializer):
-    hierarchy = serializers.CharField(required=False)
+
     class Meta:
         model = ContentCategory
         fields = '__all__'

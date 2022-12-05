@@ -14,8 +14,8 @@ function Navbar() {
         margin: "0",
         padding: "10px",
       }}>
-        <li style={{display: "inline", padding: "10px", paddingRight: "77%"}}>
-          FOX LOGO
+        <li style={{display: "inline", padding: "10px", paddingRight: "55%"}}>
+          <img src="../logoCopy.png" alt="Kent Silver Foxes" />
         </li>
         <li style={{display: "inline", padding: "10px"}}>
           <Link to="/">Home</Link>
