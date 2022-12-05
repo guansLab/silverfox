@@ -1,12 +1,19 @@
 from django.db import models
 from django_quill.fields import QuillField
 from django.contrib.auth import get_user_model
+from django.core.validators import FileExtensionValidator
+from django.utils.translation import ugettext as _
+
+IMAGE_FILE_FORMATS = ["png", "jpg", "jpeg", "raw", "tiff", "gif", "bmp"]
 
 
 class ContentCategory(models.Model):
     parent_category = models.ForeignKey('self', null=True, blank=True, on_delete=models.CASCADE)
     category_name = models.CharField(max_length=64, null=False, blank=False)
     hierarchy = models.CharField(max_length=512, null=True, blank=True)
+    thumbnail = models.ImageField(validators=[FileExtensionValidator(IMAGE_FILE_FORMATS)],
+                                  help_text=_("Thumbnail for the category"),
+                                  null=False, blank=False)
 
     def __str__(self):
         return self.category_name
