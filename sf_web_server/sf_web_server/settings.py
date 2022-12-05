@@ -22,7 +22,9 @@ SECRET_KEY = 'django-insecure-7nq5*&r3badmo(4r9jezck=h9*#u=w&4sa)@+g=9#@#*8w%$2r
 DEBUG = True
 
 ALLOWED_HOSTS = ['http://localhost:3000',
-                 'localhost']
+                 'localhost',
+                 'http://131.123.39.125:3000',
+                 "131.123.39.125"]
 
 # Application definition
 
@@ -92,16 +94,16 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.user_auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.user_auth.password_validation.MinimumLengthValidator',
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.user_auth.password_validation.CommonPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.user_auth.password_validation.NumericPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
 
@@ -119,8 +121,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
-
+STATIC_URL = 'django-static/'
+MEDIA_URL = 'django-media/'
 STATIC_ROOT = './static'
 MEDIA_ROOT = './media'
 

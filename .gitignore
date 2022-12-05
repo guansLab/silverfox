@@ -9,9 +9,11 @@
 **/coverage
 
 # production
+**/**/static
 **/build
 
 # misc
+**/**/__pycache__
 **/.DS_Store
 **/.env.local
 **/.env.development.local
@@ -27,7 +29,7 @@
 **/**.idea
 
 ### react ###
-.DS_*
+**/**.DS_*
 *.log
 logs
 **/*.backup.*
