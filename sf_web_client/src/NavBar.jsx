@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 function Navbar() {
   const { username } = useSelector(state => state.session);
 
-  if (true) {
+  if (username) {
     return(
     <nav style=
     {{
