@@ -31,7 +31,7 @@ class LoginView(views.APIView):
 class LogoutView(views.APIView):
 
     def post(self, request):
-        if not request.user.is_authenticated:
+        if not request.user:
             return Response({'error': 'User not logged in'}, status=status.HTTP_400_BAD_REQUEST)
         logout(request)
         return Response(None, status=status.HTTP_202_ACCEPTED)

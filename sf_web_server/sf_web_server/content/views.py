@@ -8,7 +8,7 @@ import django_filters
 class ContentCategoryViewSet(ModelViewSet):
     queryset = ContentCategory.objects.all()
     serializer_class = ContentCategorySerializer
-    filter_class = ContentCategoryFilter
+    filterset_class = ContentCategoryFilter
     filter_backends = (django_filters.rest_framework.DjangoFilterBackend, )
 
 

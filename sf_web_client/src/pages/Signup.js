@@ -36,8 +36,7 @@ const Signup = ({errors, signup}) => {
           password: values.password,
           confirm_password: values.confirmPassword
         }
-        signup(user);
-        nav('');
+        signup(user).then(() => {nav('/login')}).catch();
     };
 
     return (
