@@ -1,10 +1,11 @@
-import { BrowserRouter, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 function Navbar() {
-  const { isLoggedIn } = useSelector(state => state.auth);
+  const { isLoggedIn } = useSelector(state => state.userId) || ''; /* Does this work? */
+  console.log(isLoggedIn)
 
-  if (isLoggedIn) {
+  if (isLoggedIn === '') {
     return(
     <nav style=
     {{
