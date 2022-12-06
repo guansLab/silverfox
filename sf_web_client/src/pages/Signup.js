@@ -37,7 +37,7 @@ const Signup = ({errors, signup}) => {
           confirm_password: values.confirmPassword
         }
         signup(user);
-        nav('');
+        nav('/home'); /* Added redirect to home from signup page */
     };
 
     return (
