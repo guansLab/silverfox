@@ -2,10 +2,9 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 function Navbar() {
-  const { username } = useSelector(state => state.username); /* No idea, need fix */
-  console.log(username)
+  const { username } = useSelector(state => state.session);
 
-  if (true) {
+  if (username) {
     return(
     <nav style=
     {{
