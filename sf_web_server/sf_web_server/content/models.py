@@ -44,6 +44,9 @@ class Content(models.Model):
     post_date = models.DateField(auto_now_add=True)
     category = models.ForeignKey(ContentCategory, on_delete=models.CASCADE)
     snippet = models.CharField(max_length=255)
+    thumbnail = models.ImageField(validators=[FileExtensionValidator(IMAGE_FILE_FORMATS)],
+                                  help_text=_("Thumbnail for the content"),
+                                  null=False, blank=False)
 
     def __str__(self):
         return self.title
