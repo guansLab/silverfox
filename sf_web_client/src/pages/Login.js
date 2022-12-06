@@ -14,11 +14,6 @@ const mapDispatchToProps = dispatch => ({
   login: user => dispatch(login(user))
 });
 
-const loginSchema = Yup.object().shape({
-  email: Yup.string().email("Invalid Email address").required("Required"),
-  password: Yup.string().min(8, "Must be 8 characters or more").required("Required"),
-});
-
 const Login = ({errors, login}) => {
   let nav = useNavigate();
   const handleSubmit = (values) => {
@@ -40,7 +35,6 @@ const Login = ({errors, login}) => {
     return (
       <Formik
       initialValues={{email: '', password: ''}}
-      validationSchema={loginSchema}
       onSubmit={handleSubmit}>
         <Form id="loginBox">
           <div className="form">

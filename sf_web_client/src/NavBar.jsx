@@ -22,7 +22,7 @@ function Navbar() {
           <img src="../logoCopy.png" alt="Kent Silver Foxes" />
         </li>
         <li style={{display: "inline", padding: "10px"}}>
-          <Link to="/">Home</Link>
+          <Link to="/home">Home</Link>
         </li>
         <li style={{display: "inline", padding: "10px"}}>
           <Link to="/logout">Logout</Link> {/* This should work, but page goes blank*/}
@@ -50,7 +50,7 @@ function Navbar() {
           <img src="../logoCopy.png" alt="Kent Silver Foxes" />
         </li>
         <li style={{display: "inline", padding: "10px"}}>
-          <Link to="/">Home</Link>
+          <Link to="/home">Home</Link>
         </li>
         <li style={{display: "inline", padding: "10px"}}>
           <Link to="/login">Login</Link>

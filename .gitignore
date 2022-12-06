@@ -57,7 +57,7 @@ sketch
 # if you are NOT using Zero-installs, then:
 # comment the following lines
 !.yarn/cache
-
+**/**media
 # and uncomment the following lines
 # .pnp.*
 **/**.pyc

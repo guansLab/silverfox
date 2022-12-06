@@ -26,9 +26,13 @@
     height: 70%;
   }
   
-  .categoryTile {
+  .categoryName {
     background-color: white;
     width: 150px;
     height: 200px;
     outline: solid black 1px;
+  }
+
+  .categoryItem{
+    border-radius: 25px;
   }

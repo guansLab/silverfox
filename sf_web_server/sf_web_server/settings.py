@@ -30,6 +30,7 @@ ALLOWED_HOSTS = ['http://localhost:3000',
 
 INSTALLED_APPS = [
     'rest_framework',
+    'django_filters',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'django_extensions',
-    'django_filters',
     'django_quill',
     'sf_web_server.user_auth.apps.UserAuthConfig',
     'sf_web_server.content.apps.ContentConfig',
@@ -140,6 +140,9 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
     ],
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ),
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10
 }
