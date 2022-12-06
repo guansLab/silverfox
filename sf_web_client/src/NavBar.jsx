@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 function Navbar() {
   const { username } = useSelector(state => state.session);
 
-  if (username) {
+  if (true) {
     return(
     <nav style=
     {{
@@ -25,7 +25,7 @@ function Navbar() {
           <Link to="/">Home</Link>
         </li>
         <li style={{display: "inline", padding: "10px"}}>
-          <Link to="/">Logout</Link> {/* This should work, but page goes blank*/}
+          <Link to="/logout">Logout</Link> {/* This should work, but page goes blank*/}
         </li>
       </ul>
     </nav>
