@@ -1,7 +1,7 @@
 from rest_framework.viewsets import ModelViewSet
 from .models import ContentCategory, Content
 from .serializers import ContentCategorySerializer, ContentSerializer
-from .filters import ContentCategoryFilter
+from .filters import ContentCategoryFilter, ContentFilter
 import django_filters
 
 
@@ -15,4 +15,5 @@ class ContentCategoryViewSet(ModelViewSet):
 class ContentViewSet(ModelViewSet):
     queryset = Content.objects.all()
     serializer_class = ContentSerializer
+    filterset_class = ContentFilter
 

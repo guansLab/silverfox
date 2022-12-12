@@ -2,7 +2,6 @@ import axios from '../axios';
 const REGISTER_URL = '/register/';
 const LOGIN_URL = '/login/';
 const LOGOUT_URL = '/logout/';
-const HOME_CATEGORIES_URL = '/content-category/'
 
 export const signup = user => (
     axios.post(REGISTER_URL,{
@@ -42,15 +41,8 @@ export const signup = user => (
       }
       )
   );
-  export const category = parent_id => {
-    let url;
-      if(parent_id){
-        url += "?parent_category=" + parent_id;
-      }
-      else{
-        url += "?root_category=True";
-      }
-      axios.get(url,
+  export const getData = url => {
+      return axios.get(url,
       {
         headers: {
           'Content-Type': 'application/json'
@@ -58,4 +50,3 @@ export const signup = user => (
         withCredentials: false
       });
   }
-  

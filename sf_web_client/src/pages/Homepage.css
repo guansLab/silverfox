@@ -2,7 +2,8 @@
     background-color: white;
     width: 100%;
     height: 100%;
-    padding-top: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
   }
   
   #navigationbar {
@@ -15,12 +16,8 @@
   }
   
   #pageBody {
-    display: grid;
     align-content: space-evenly;
-    grid-template-columns: auto auto auto;
     background-color: #2196F3;
-    grid-gap: 10%;
-    padding: 5%;
     background-color: white;
     width: 100%;
     height: 70%;
@@ -35,4 +32,49 @@
 
   .categoryItem{
     border-radius: 25px;
+  }
+
+  .categoryItemName {
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+  }
+
+  .imageList {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+     gap: 4px;
+  }
+
+  .categoryImage {
+    width: 150px;
+     height: 100px;
+     vertical-align:0%;
+  }
+
+  .content {
+    max-width: 100%;
+    width: 100%;
+    height: 200px;
+    background-color: transparent;
+  }
+
+  .contentTextDiv {
+    display: flex;
+  }
+
+  .contentText {
+    padding-left: 5%;;
+  }
+
+  .contentTitle{
+    color: rgba(41, 41, 41, 1);
+  }
+
+  .contentSnippet {
+    color: rgba(117, 117, 117, 1)
+  }
+
+  .content:hover {
+    background-color: lightblue;
+    color: white;
   }

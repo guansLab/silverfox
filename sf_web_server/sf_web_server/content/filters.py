@@ -1,6 +1,6 @@
 import django_filters
 from django_filters import rest_framework as filters
-from .models import ContentCategory
+from .models import ContentCategory, Content
 
 
 class ContentCategoryFilter(filters.FilterSet):
@@ -9,3 +9,8 @@ class ContentCategoryFilter(filters.FilterSet):
     class Meta:
         model = ContentCategory
         fields = ["category_name", "hierarchy", "parent_category"]
+
+class ContentFilter(filters.FilterSet):
+    class Meta:
+        model = Content
+        fields = ["category"]

@@ -2,8 +2,17 @@ import './Homepage.css';
 import { useEffect, useState } from 'react';
 import Grid from '@mui/material/Grid';
 import { styled } from '@mui/material/styles';
-import axios from '../axios';
 import ButtonBase from '@mui/material/ButtonBase';
+import { getCategories, getContents} from "../actions/categories";
+import { connect } from "react-redux";
+import { useNavigate, useParams } from 'react-router-dom';
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
+import ImageListItemBar from '@mui/material/ImageListItemBar';
+import IconButton from '@mui/material/IconButton';
+import List from '@mui/material/List';
+import ListItemText from '@mui/material/ListItemText';
+
 
 const Img = styled('img')({
   margin: 'auto',
@@ -15,52 +24,30 @@ const Img = styled('img')({
 // CURRENT ISSUES: ROUTING IN NAVIGATION BAR IS NOT WORKING
 //                 NEED TO DYNAMICALLY GENERATE PAGES ACCORDING TO CONTENT
 
-const HOME_CATEGORIES_URL = '/content-category/'
 
-function Homepage(props) {
+const mapStateToProps = (state, ownProps) => ({
+  category: state.categoryData.categories,
+  content: state.categoryData.contents,
+  props: ownProps
+});
 
-  console.log(props);
+const mapDispatchToProps = dispatch => ({
+  getCategories: id => dispatch(getCategories(id)),
+  getContents: id => dispatch(getContents(id)),
+});
 
-  const [data, setData] = useState([]);
-  const [filter, setFilter] = useState(data);
-  const [loading, setLoading] = useState(false);
-  const [loaded, setLoaded] = useState(false);
-  const [subCategory, setSubCategory] = useState(null);
-  let componentMounted = true;
+function Homepage({category, content, props, getCategories, getContents}) {
+  const nav = useNavigate();
+  var categoryId = null;
 
-
-    const getCategories = async() => {
-      console.log("Changed state");
-      setLoading(true);
-      let url = HOME_CATEGORIES_URL;
-      if(subCategory){
-        url += "?parent_category=" + subCategory;
-      }
-      else{
-        url += "?root_category=True";
-      }
-      const response = await axios.get(url,
-      {
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        withCredentials: false
-      });
-      if(componentMounted){
-        setData(response.data.results);
-        setFilter(response.data.results);
-        setLoading(false);
-      }
-      return () => {
-        componentMounted = false;
-      }
-    }
- 
-
-  const handleClick = category => {
-    setSubCategory(category.id);
-    setLoaded(false);
+  if(props.home) {
+    getCategories(categoryId);
+    props.home = false;
+    getContents(null);
   }
+
+  useEffect(() => {getCategories(categoryId)},[]);
+
 
   const Loading = () => {
     return (
@@ -70,19 +57,81 @@ function Homepage(props) {
     )
   }
 
+  const handleClick = (image) => {
+    categoryId = image.id; 
+    getCategories(image.id); 
+    getContents(image.id);
+    nav('/home/'+image.id)
+  }
+
   const ShowCategories = () => {
-    if (!loaded)
-    {
-         getCategories();
-         setLoaded(true);
-    }
+    return (
+      <div>
+      <ImageList className="imageList" cols={4}>
+      {category.map((image) => (
+        <ButtonBase sx={{ width: 246, height: 311 }} onClick={() => handleClick(image)}>
+        <ImageListItem key={image.id}>
+        
+          <img
+            src={`${image.thumbnail}?w=248&fit=crop&auto=format`}
+            alt={image.category_name}
+            loading="lazy"
+            className={"categoryItem " + image.id}
+          />
+          <ImageListItemBar
+            title={image.category_name}
+            actionIcon={
+              <IconButton
+                sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
+                aria-label={`info about ${image.category_name}`}
+              >
+              </IconButton>
+            }
+            className={"categoryItemName"}
+          />
+        </ImageListItem>
+        </ButtonBase>
+      ))}
+    </ImageList>
+    <List>
+      {content && content.map((image) => {
+        return (
+          <button className={"content"}
+            key={image.id}
+            onClick={() => {nav('/content/'+image.id)}}>
+              <div className={"contentTextDiv"}>
+                <img
+                  alt={"Image"}
+                  src={`${image.thumbnail}?w=230&fit=crop&auto=format`}
+                  className={"categoryImage"}
+                />
+                <span className={"contentText"}>
+                  <div className={"contentTitle"}>
+                    <h2>{ image.title }</h2>
+                  </div>
+                  <div className={"contentSnippet"}>
+                    <p>{ image.snippet }</p>
+                  </div>
+                </span>
+              </div>
+              <ListItemText id={image.id} />
+          </button>
+        )
+      })}
+    </List>
+    </div>
+  )
+}
+
+
+  const ShowCategoriescopy = () => {
     return (
         <Grid container spacing={12} >
-        {filter.map((category) => {
+        {category.categories.map((image) => {
             return(
-              <Grid item key={category.id} xs={12} sm={6} md={6}>
-                <ButtonBase sx={{ width: 246, height: 311 }} onClick={() => {setSubCategory(category.id);setLoaded(false);}}>
-                  <Img alt="complex" src={category.thumbnail} className={"categoryItem " + category.id}/>
+              <Grid item key={image.id}>
+                <ButtonBase sx={{ width: 246, height: 311 }} onClick={() => handleClick(image)}>
+                  <Img alt="complex" src={image.thumbnail} className={"categoryItem " + image.id}/>
                 </ButtonBase>
               </Grid>
             )
@@ -93,10 +142,11 @@ function Homepage(props) {
     return (
     <div id="homepage">
       <div id="pageBody">
-        {loading ? <Loading/>: <ShowCategories/>}
+        {category == [] ? <Loading/>: <ShowCategories/>}
       </div>
     </div>
   );
-}
+    }
 
-export default Homepage;
+
+export default connect(mapStateToProps, mapDispatchToProps)(Homepage);
