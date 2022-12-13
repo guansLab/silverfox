@@ -36,7 +36,7 @@ function Homepage(props) {
   const [contents, setContents] = useState([]);
   const [categoryId, setCategoryId] = useState(null);
   const [prePath, setPrePath] = useState(null);
-  var catName = null;
+  var catId = null;
 
   var params = useParams();
   var location = useLocation();
@@ -44,8 +44,8 @@ function Homepage(props) {
 
   async function getCategories() {
     let url = HOME_CATEGORIES_URL;
-      if(catName){
-        url += "?parent_category__category_name=" + catName;
+      if(catId){
+        url += "?parent_category=" + catId;
       }
       else{
         url += "?root_category=True";
@@ -58,11 +58,11 @@ function Homepage(props) {
 }
 
 async function getContents() {
-  if (!catName) {
+  if (!catId) {
     setContents([]);
     return;
   }
-  let url = CONTENTS_URL + "?category__category_name=" + catName;
+  let url = CONTENTS_URL + "?category=" + catId;
   const response = await getResult(url);
 if (response.statusText === "OK") {
     setContents(response.data.results);
@@ -77,15 +77,12 @@ if (response.statusText === "OK") {
   
 
   useEffect(() => {
-    console.log("use effect");
-    catName = params['id'];
+    catId = params['id'];
     getCategoryData();
     },[]);
 
   const onClickCategory = () => {
-    console.log("Onclick category");
-    console.log(params['id']);
-    catName = params['id'];
+    catId = params['id'];
     getCategoryData();
     }
 
@@ -104,7 +101,7 @@ if (response.statusText === "OK") {
     if (location.pathname == "/") {
         slash = "";
     }
-    nav(location.pathname + slash + image.category_name);
+    nav(location.pathname + slash + image.id);
     
   }
 
@@ -132,7 +129,7 @@ if (response.statusText === "OK") {
             actionIcon={
               <IconButton
                 sx={{ color: 'rgba(255, 255, 255, 0.54)' }}
-                aria-label={`info about ${image.category_name}`}
+                aria-label={`info about ${image.id}`}
               >
               </IconButton>
             }
