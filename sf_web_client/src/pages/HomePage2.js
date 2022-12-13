@@ -100,13 +100,15 @@ if (response.statusText === "OK") {
 
   const handleClick = (image) => {
     console.log(location);
-    nav(location.pathname + "/" + image.category_name);
+    var slash = "/";
+    if (location.pathname == "/") {
+        slash = "";
+    }
+    nav(location.pathname + slash + image.category_name);
+    
   }
-  console.log(params, prePath);
 
   if (params['id'] != prePath) {
-    console.log("Current:", params);
-    console.log("Previous:", prePath);
     setPrePath(params['id']);
     onClickCategory();
 }

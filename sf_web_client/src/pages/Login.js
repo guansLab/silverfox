@@ -23,7 +23,7 @@ const Login = ({errors, login}) => {
         }
         login(user).then(
           () => {
-            nav("/home");
+            nav("/");
           }
         ).catch(
           (error) => {

@@ -20,10 +20,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />} >
         <Route index element={<HomePage2 />} />
-        <Route path="home/" element={<HomePage2 />} />
-        <Route path="home/:id/" element={<HomePage2 />} />
-        <Route path="home/:id2/:id/" element={<HomePage2 />} />
-        <Route path="home/:id3/:id2/:id/" element={<HomePage2 />} />
+        <Route path=":id/" element={<HomePage2 />} />
+        <Route path=":id2/:id/" element={<HomePage2 />} />
+        <Route path=":id3/:id2/:id/" element={<HomePage2 />} />
         <Route path="home/:id4/:id3/:id2/:id/" element={<HomePage2 />} />
         <Route path="home/:id5/:id4/:id3/:id2/:id/" element={<HomePage2 />} />
         <Route path="home/:id6/:id5/:id4/:id3/:id2/:id/" element={<HomePage2 />} />

@@ -14,7 +14,7 @@ const Logout = ({ errors, logout }) => { /* Needs testing */
   let nav = useNavigate();
   const handleSubmit = () => {
     logout().then(() => {
-        nav("/home");
+        nav("/");
       })
       .catch((error) => {<div />});
   };
