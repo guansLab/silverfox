@@ -8,9 +8,9 @@ class ContentCategoryFilter(filters.FilterSet):
 
     class Meta:
         model = ContentCategory
-        fields = ["category_name", "hierarchy", "parent_category"]
+        fields = ["category_name", "hierarchy", "parent_category", "parent_category__category_name"]
 
 class ContentFilter(filters.FilterSet):
     class Meta:
         model = Content
-        fields = ["category"]
+        fields = ["category", "category__category_name"]

@@ -1,23 +1,29 @@
 import { useParams } from "react-router-dom";
-import { connect } from "react-redux";
-import { getContentPage } from "../actions/categories";
 import { useEffect } from "react";
 import './ContentPage.css';
+import React, { useState } from 'react';
+import { getResult } from "./AxiosHelper";
 
 
-const mapStateToProps = (state) => ({
-    contentPage: state.categoryData.contentPage,
-  });
+const CONTENTS_URL = '/content/'
+
   
-  const mapDispatchToProps = dispatch => ({
-    getContentPage: id => dispatch(getContentPage(id)),
-});
-  
-function ContentPage({contentPage, getContentPage}) {
+function ContentPage(props) {
 
     const params = useParams();
+    const [contentPage, setContentPage] = useState(null);
+
+    async function getContentPage(id) {
+        let url = CONTENTS_URL + id + '/';
+        const response = await getResult(url);
+        if (response.statusText === "OK") {
+          setContentPage(response.data);
+          }
+    } 
+    
     useEffect(() => {
         getContentPage(params.id);
+        console.log(contentPage);
     }, []);
 
     const ShowContentPageData = () => {
@@ -36,4 +42,4 @@ function ContentPage({contentPage, getContentPage}) {
         </div>
     ); }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ContentPage);
+export default ContentPage;
