@@ -72,7 +72,7 @@ function TopNews(){
 
     return (
         <div>
-            {topNews.length == 0 ? <div></div>:<ShowTopNews/> }
+            {!topNews || topNews.length == 0 ? <div></div>:<ShowTopNews/> }
         </div>
     );
 
