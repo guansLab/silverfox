@@ -6,7 +6,7 @@ import left_arrow from "../arrow-94-64.ico";
 import { useNavigate, useParams } from 'react-router-dom';
 
 
-const TOP_NEWS_URL = "/content/";
+const TOP_NEWS_URL = "/top-news?is_active=True";
 
 function TopNews(){
 
