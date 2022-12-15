@@ -72,7 +72,7 @@ function TopNews(){
 
     return (
         <div>
-            {topNews == [] ? <div></div>:<ShowTopNews/> }
+            {topNews.length == 0 ? <div></div>:<ShowTopNews/> }
         </div>
     );
 
