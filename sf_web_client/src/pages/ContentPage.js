@@ -28,11 +28,11 @@ function ContentPage(props) {
 
     const ShowContentPageData = () => {
         return (
-        <div className={"contentPageData"}>
-                <h1>
+        <div >
+                <h1 className={"contentPageTitle"}>
                     {contentPage.title}
                 </h1>
-        <div dangerouslySetInnerHTML={{ __html: contentPage.body }} />
+        <div dangerouslySetInnerHTML={{ __html: contentPage.body }}  className={"contentPageData"}/>
         </div>
         )
     }

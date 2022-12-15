@@ -1,10 +1,6 @@
 import './Homepage.css';
 import { useEffect, useState } from 'react';
-import Grid from '@mui/material/Grid';
-import { styled } from '@mui/material/styles';
 import ButtonBase from '@mui/material/ButtonBase';
-import { getCategories, getContents} from "../actions/categories";
-import { connect } from "react-redux";
 import { useNavigate, useParams } from 'react-router-dom';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
@@ -18,14 +14,6 @@ import { useLocation } from 'react-router-dom';
 const HOME_CATEGORIES_URL = '/content-category/'
 const CONTENTS_URL = '/content/'
 
-
-const Img = styled('img')({
-  margin: 'auto',
-  display: 'block',
-  maxWidth: '100%',
-  maxHeight: '100%',
-});
-
 // CURRENT ISSUES: ROUTING IN NAVIGATION BAR IS NOT WORKING
 //                 NEED TO DYNAMICALLY GENERATE PAGES ACCORDING TO CONTENT
 
@@ -34,7 +22,6 @@ function Homepage(props) {
   const nav = useNavigate();
   const [categories, setCategories] = useState([]);
   const [contents, setContents] = useState([]);
-  const [categoryId, setCategoryId] = useState(null);
   const [prePath, setPrePath] = useState(null);
   var catId = null;
 
@@ -54,7 +41,6 @@ function Homepage(props) {
   if (response.statusText === "OK") {
       setCategories(response.data.results);
     }
-    console.log(response.data);
 }
 
 async function getContents() {
@@ -67,7 +53,6 @@ async function getContents() {
 if (response.statusText === "OK") {
     setContents(response.data.results);
   }
-  console.log(response.data);
 }
 
   const getCategoryData = () => {
@@ -96,7 +81,6 @@ if (response.statusText === "OK") {
   }
 
   const handleClick = (image) => {
-    console.log(location);
     var slash = "/";
     if (location.pathname == "/") {
         slash = "";

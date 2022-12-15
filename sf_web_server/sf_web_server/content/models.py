@@ -14,6 +14,11 @@ class ContentCategory(models.Model):
     thumbnail = models.ImageField(validators=[FileExtensionValidator(IMAGE_FILE_FORMATS)],
                                   help_text=_("Thumbnail for the category"),
                                   null=False, blank=False)
+    ordering = models.SmallIntegerField(default=0, help_text=_("Order in which it has to be displayed,"
+                                                               " 1 means display first"))
+
+    class Meta:
+        verbose_name_plural = "Content Categories"
 
     def __str__(self):
         return self.category_name
@@ -43,10 +48,27 @@ class Content(models.Model):
     body = QuillField(blank=True, null=True)
     post_date = models.DateField(auto_now_add=True)
     category = models.ForeignKey(ContentCategory, on_delete=models.CASCADE)
-    snippet = models.CharField(max_length=255)
+    snippet = models.CharField(max_length=255, help_text=_("Short description of the content"))
     thumbnail = models.ImageField(validators=[FileExtensionValidator(IMAGE_FILE_FORMATS)],
                                   help_text=_("Thumbnail for the content"),
                                   null=False, blank=False)
 
     def __str__(self):
         return self.title
+
+
+class TopNews(models.Model):
+    title = models.CharField(max_length=255)
+    author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    body = QuillField(blank=True, null=True)
+    post_date = models.DateField(auto_now_add=True)
+    snippet = models.CharField(max_length=255, help_text=_("Short description of the content"))
+    ordering = models.SmallIntegerField(default=0, help_text=_("Order in which it has to be displayed,"
+                                                               " 1 means display first"))
+    is_active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name_plural = "Top News"

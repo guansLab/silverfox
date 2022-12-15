@@ -1,6 +1,6 @@
 import django_filters
 from django_filters import rest_framework as filters
-from .models import ContentCategory, Content
+from .models import ContentCategory, Content, TopNews
 
 
 class ContentCategoryFilter(filters.FilterSet):
@@ -10,7 +10,14 @@ class ContentCategoryFilter(filters.FilterSet):
         model = ContentCategory
         fields = ["category_name", "hierarchy", "parent_category", "parent_category__category_name"]
 
+
 class ContentFilter(filters.FilterSet):
     class Meta:
         model = Content
         fields = ["category", "category__category_name"]
+
+
+class TopNewsFilter(filters.FilterSet):
+    class Meta:
+        model = TopNews
+        fields = ["is_active"]

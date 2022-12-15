@@ -1,0 +1,53 @@
+.topNewsContainer {
+    position: relative;
+    width: 100%;
+    height: 20%;
+    font-size: larger;
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+.topNewsText {
+    color: #8C1404;
+    font-weight: bold;
+}
+
+.topNewsInnerContainer {
+    background-color: rgb(200, 243, 220);
+    box-shadow: ;
+    justify-content: center;
+    display: flex;
+    height: 3%;
+}
+
+.topNewsLeftButtonDiv {
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+}
+
+
+.topNewsRightButtonDiv {
+    width: 100%;
+    text-align: right;
+    cursor: pointer;
+}
+
+.topNewsLeftButton {
+    width: 7%;
+    margin:2%;
+}
+
+.topNewsRightButton {
+    width: 7%;
+    margin:2%;
+}
+
+.topNewsContent {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    margin:1%;
+    font-weight: bold;
+    cursor: pointer; 
+}

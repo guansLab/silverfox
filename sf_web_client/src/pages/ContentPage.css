@@ -1,4 +1,11 @@
-.contentPageData {
+.contentPageTitle {
+   padding: 5%;
+   display: flex;
+   justify-content: center;
+}
 
-   padding: 10%;
+.contentPageData {
+   padding: 5%;
+   display: flex;
+   justify-content: center;
 }

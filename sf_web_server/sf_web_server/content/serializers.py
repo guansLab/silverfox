@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import ContentCategory, Content
+from .models import ContentCategory, Content, TopNews
 
 
 class ContentCategorySerializer(serializers.ModelSerializer):
@@ -18,4 +18,11 @@ class ContentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Content
+        fields = '__all__'
+
+
+class TopNewsSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = TopNews
         fields = '__all__'

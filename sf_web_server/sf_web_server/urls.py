@@ -1,7 +1,7 @@
 from django.urls import include, path
 from rest_framework import routers
-from sf_web_server.user_auth.views import GroupViewSet, LoginView, RegisterView, LogoutView, index_view
-from sf_web_server.content.views import ContentCategoryViewSet, ContentViewSet
+from sf_web_server.user_auth.views import GroupViewSet, LoginView, RegisterView, LogoutView
+from sf_web_server.content.views import ContentCategoryViewSet, ContentViewSet, TopNewsViewSet
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
@@ -10,6 +10,7 @@ router = routers.DefaultRouter()
 router.register(r'groups', GroupViewSet)
 router.register(r'content-category', ContentCategoryViewSet)
 router.register(r'content', ContentViewSet)
+router.register(r'top-news', TopNewsViewSet)
 
 admin.site.site_header = "Silver Foxes Admin"
 admin.site.site_title = "Silver Foxes Admin Portal"
