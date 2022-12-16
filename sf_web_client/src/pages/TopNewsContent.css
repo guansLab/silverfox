@@ -1,9 +1,10 @@
 .topNewsContentPageTitle {
-    padding: 5%;
+    padding: 3%;
     display: flex;
     justify-content: center;
  }
  
  .topNewsContentPageData {
-    padding: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
  }

@@ -1,9 +1,10 @@
 .contentPageTitle {
-   padding: 5%;
+   padding: 3%;
    display: flex;
    justify-content: center;
 }
 
 .contentPageData {
-   padding: 5%;
+   padding-left: 5%;
+   padding-right: 5%;
 }
