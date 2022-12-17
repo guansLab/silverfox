@@ -29,15 +29,17 @@ function Navbar() {
               {username?<></>:<Link to="/signup">Sign Up</Link>}
             </li>
           </ul>
-          <ul style={{display: "inline", float:"right"}}>
-            <li style={{display: "inline", padding: "10px"}}>
-              <Link to="/about">About Us</Link>
-            </li>
-            <li style={{display: "inline", padding: "10px"}}>
-              <Link to="/contact">Contact Us</Link>
-            </li>
-          </ul>
-        </li>
+          </li>
+          <li>
+            <ul style={{display: "inline", float:"right"}}>
+              <li style={{display: "inline", padding: "10px"}}>
+                <Link to="/about">About Us</Link>
+              </li>
+              <li style={{display: "inline", padding: "10px"}}>
+                <Link to="/contact">Contact Us</Link>
+              </li>
+            </ul>
+          </li>
       </ul>
     </nav>
   );
