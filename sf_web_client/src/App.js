@@ -32,7 +32,7 @@ function App() {
         <Route path="logout" element={<Logout />} />
         <Route path="resources" element={<Resources />} />
         <Route path="about" element={<About />} />
-        <Route path="contact/" element={<Contact />} />
+        <Route path="contact" element={<Contact />} />
         <Route path="content/:id" element={<ContentPage />} />
         <Route path="top-news/:id" element={<TopNewsContentPage />} />
         </Route>

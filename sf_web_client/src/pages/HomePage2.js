@@ -10,7 +10,6 @@ import List from '@mui/material/List';
 import ListItemText from '@mui/material/ListItemText';
 import { getResult } from './AxiosHelper';
 import { useLocation } from 'react-router-dom';
-import { Breadcrumb } from 'reactstrap';
 
 const HOME_CATEGORIES_URL = '/content-category/'
 const CONTENTS_URL = '/content?category__category_name='
@@ -157,7 +156,6 @@ if (response.statusText === "OK") {
     let index = 0;
     let breadcrumbs = []
     let path_to_crumb = location.pathname.toString();
-    path_to_crumb
     while(index < path_to_crumb.length){
       if (index === 0)
       {
