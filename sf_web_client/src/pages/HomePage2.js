@@ -157,6 +157,7 @@ if (response.statusText === "OK") {
     let index = 0;
     let breadcrumbs = []
     let path_to_crumb = location.pathname.toString();
+    path_to_crumb
     while(index < path_to_crumb.length){
       if (index === 0)
       {
@@ -177,7 +178,7 @@ if (response.statusText === "OK") {
       <div className={"breadcrumbs"}>
         {console.log(breadcrumbs)}
       {breadcrumbs.map((each) => (
-        <span key={each[1]} className={'eachBreadcrumb'} onClick={()=> {nav(each[1])}}>{each[0] + ">"}</span>
+        <span key={each[1]} className={'eachBreadcrumb'} onClick={()=> {nav(each[1])}}>{each[0].replaceAll("%20", " ") + ">"}</span>
       ))}
       </div>
     )
