@@ -53,7 +53,7 @@ function TopNews(){
 
     const ShowTopNews = () => {
         return (
-            <div>
+            <div className={"topNewsInnerContainer"}>
                 <div className={"topNewsLeftButtonDiv"}>
                     <img src={left_arrow} className={"topNewsLeftButton"} onClick={() => {handleClick("left")}}></img>
                 </div>
@@ -70,9 +70,7 @@ function TopNews(){
     return (
         <div className={"topNewsContainer"}>
             <div className={"topNewsText"}>Top News</div>
-            <div className={"topNewsInnerContainer"}>
-                {topNews && topNews.length !== 0? <ShowTopNews/>: <div></div>}
-            </div>
+            {topNews && topNews.length !== 0? <ShowTopNews/>: <div></div>}
         </div>
     );
 
