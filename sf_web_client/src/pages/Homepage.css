@@ -78,3 +78,16 @@
     background-color: lightblue;
     color: white;
   }
+
+  .breadcrumbs{
+    font-size: x-large;
+    font-style: oblique;
+    color: maroon;
+    font-weight: bold;
+  }
+
+  .eachBreadcrumb:hover{
+    cursor: pointer;
+    color: grey;
+    text-decoration: underline;
+  }

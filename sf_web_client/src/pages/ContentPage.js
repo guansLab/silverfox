@@ -14,7 +14,7 @@ function ContentPage(props) {
     const [contentPage, setContentPage] = useState(null);
 
     async function getContentPage(id) {
-        let url = CONTENTS_URL + id + '/';
+        let url = CONTENTS_URL + id;
         const response = await getResult(url);
         if (response.statusText === "OK") {
           setContentPage(response.data);

@@ -3,8 +3,7 @@
     width: 100%;
     height: 20%;
     font-size: larger;
-    padding-left: 3%;
-    padding-right: 3%;
+    padding: 3%;
 }
 
 .topNewsText {
@@ -14,10 +13,9 @@
 
 .topNewsInnerContainer {
     background-color: rgb(200, 243, 220);
-    box-shadow: ;
     justify-content: center;
     display: flex;
-    height: 3%;
+    height: 7vh;
 }
 
 .topNewsLeftButtonDiv {

@@ -1,8 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import "./NavBar.css"
 
 function Navbar() {
   const { username } = useSelector(state => state.session);
+  const nav = useNavigate();
 
   if (username) {
     return(
@@ -19,19 +21,13 @@ function Navbar() {
         padding: "10px",
       }}> 
         <li style={{display: "inline", padding: "1%", paddingRight: "55%"}}>
-          <img src="../logoCopy.png" alt="Kent Silver Foxes" />
+          <img className={"logo"} src="../logoCopy.png" alt="Kent Silver Foxes" onClick={ () => {nav("/") }}/>
           <ul style={{display: "inline", padding: "1%", float:"right"}}>
             <li style={{display: "inline", padding: "10px"}}>
-              <Link to="/">Home</Link>
-            </li>
-            <li style={{display: "inline", padding: "10px"}}>
-              <Link to="/logout">Logout</Link> {/* This should work, but page goes blank*/}
+              <Link to="/logout">Logout</Link>
             </li>
           </ul>
           <ul style={{display: "inline", float:"right"}}>
-            <li style={{display: "inline", padding: "10px"}}>
-              <Link to="/resources">Resource Guide</Link>
-            </li>
             <li style={{display: "inline", padding: "10px"}}>
               <Link to="/about">About Us</Link>
             </li>
@@ -60,19 +56,16 @@ function Navbar() {
         padding: "10px",
       }}> 
         <li style={{display: "inline", padding: "1%", paddingRight: "55%"}}>
-          <img src="../logoCopy.png" alt="Kent Silver Foxes" />
+          <img className={"logo"} style={{ hover: "pointer" }} src="../logoCopy.png" alt="Kent Silver Foxes" onClick={ () => {nav("/") }}/>
           <ul style={{display: "inline", padding: "1%", float:"right"}}>
-            <li style={{display: "inline", padding: "10px"}}>
-              <Link to="/">Home</Link>
-            </li>
             <li style={{display: "inline", padding: "10px"}}>
               <Link to="/login">Login</Link>
             </li>
+            <li style={{display: "inline", padding: "10px"}}>
+              <Link to="/signup">Sign Up</Link>
+            </li>
           </ul>
           <ul style={{display: "inline", float:"right"}}>
-            <li style={{display: "inline", padding: "10px"}}>
-              <Link to="/resources">Resource Guide</Link>
-            </li>
             <li style={{display: "inline", padding: "10px"}}>
               <Link to="/about">About Us</Link>
             </li>

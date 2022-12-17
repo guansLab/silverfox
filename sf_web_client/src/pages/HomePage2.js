@@ -10,9 +10,10 @@ import List from '@mui/material/List';
 import ListItemText from '@mui/material/ListItemText';
 import { getResult } from './AxiosHelper';
 import { useLocation } from 'react-router-dom';
+import { Breadcrumb } from 'reactstrap';
 
 const HOME_CATEGORIES_URL = '/content-category/'
-const CONTENTS_URL = '/content/'
+const CONTENTS_URL = '/content?category__category_name='
 
 // CURRENT ISSUES: ROUTING IN NAVIGATION BAR IS NOT WORKING
 //                 NEED TO DYNAMICALLY GENERATE PAGES ACCORDING TO CONTENT
@@ -32,7 +33,7 @@ function Homepage(props) {
   async function getCategories() {
     let url = HOME_CATEGORIES_URL;
       if(catId){
-        url += "?parent_category=" + catId;
+        url += "?parent_category__category_name=" + catId;
       }
       else{
         url += "?root_category=True";
@@ -48,7 +49,7 @@ async function getContents() {
     setContents([]);
     return;
   }
-  let url = CONTENTS_URL + "?category=" + catId;
+  let url = CONTENTS_URL + catId;
   const response = await getResult(url);
 if (response.statusText === "OK") {
     setContents(response.data.results);
@@ -85,7 +86,7 @@ if (response.statusText === "OK") {
     if (location.pathname == "/") {
         slash = "";
     }
-    nav(location.pathname + slash + image.id);
+    nav(location.pathname + slash + image.category_name);
     
   }
 
@@ -152,9 +153,39 @@ if (response.statusText === "OK") {
     </div>
   )
 }
+  const Breadcrumb = () => {
+    let index = 0;
+    let breadcrumbs = []
+    let path_to_crumb = location.pathname.toString();
+    while(index < path_to_crumb.length){
+      if (index === 0)
+      {
+        breadcrumbs.push(["Home", "/"]);
+      }
+      else{
+        let slash_index = path_to_crumb.indexOf("/", index);
+        if(slash_index == -1)
+          slash_index = path_to_crumb.length;
+        let next_path = path_to_crumb.substr(0, slash_index);
+        let next_crumb = path_to_crumb.substr(index, slash_index-index);
+        breadcrumbs.push([next_crumb, next_path])
+        index = slash_index;
+      }
+      index += 1;
+    }
+    return (
+      <div className={"breadcrumbs"}>
+        {console.log(breadcrumbs)}
+      {breadcrumbs.map((each) => (
+        <span key={each[1]} className={'eachBreadcrumb'} onClick={()=> {nav(each[1])}}>{each[0] + ">"}</span>
+      ))}
+      </div>
+    )
+  }
 
     return (
     <div id="homepage">
+      <Breadcrumb/>
       <div id="pageBody">
         {categories == [] ? <Loading/>: <ShowCategories/>}
       </div>
