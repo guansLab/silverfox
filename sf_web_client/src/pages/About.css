@@ -1,0 +1,23 @@
+.imageList {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+     gap: 4px;
+  }
+  
+  .pageBody {
+    align-content: space-evenly;
+    background-color: #2196F3;
+    background-color: white;
+    width: 100%;
+    padding: 3%;
+  }
+
+  .image {
+    width: '199px';
+    height: '199px';
+    object-fit: 'cover';
+  }
+
+  .image:hover {
+    cursor: pointer;
+  }

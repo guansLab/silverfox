@@ -23,7 +23,6 @@ function TopNews(){
         });
         setTopNews(response.data.results);
         setDisplayIndex(0);
-        console.log(response.data.results);
     };
 
     useEffect(() => {

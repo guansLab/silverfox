@@ -72,3 +72,20 @@ class TopNews(models.Model):
 
     class Meta:
         verbose_name_plural = "Top News"
+
+
+class AboutUs(models.Model):
+    picture = models.ImageField(validators=[FileExtensionValidator(IMAGE_FILE_FORMATS)],
+                                help_text=_("Profile picture for about us"),
+                                null=True, blank=True)
+    display_name = models.CharField(max_length=128, help_text=_("Name to be displayed"))
+    bio = QuillField(blank=True, null=True, help_text=_("Personal Bio"))
+    title = models.CharField(max_length=128, help_text=_("Role played in the project or title"))
+    ordering = models.SmallIntegerField(default=0, help_text=_("Order in which it has to be displayed, 1 means display"
+                                                               " first"))
+
+    class Meta:
+        verbose_name_plural = "About Us"
+
+    def __str__(self):
+        return self.display_name

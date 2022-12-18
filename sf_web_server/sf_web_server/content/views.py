@@ -1,6 +1,6 @@
 from rest_framework.viewsets import ModelViewSet
-from .models import ContentCategory, Content, TopNews
-from .serializers import ContentCategorySerializer, ContentSerializer, TopNewsSerializer
+from .models import ContentCategory, Content, TopNews, AboutUs
+from .serializers import ContentCategorySerializer, ContentSerializer, TopNewsSerializer, AboutUsSerializer
 from .filters import ContentCategoryFilter, ContentFilter, TopNewsFilter
 import django_filters
 
@@ -19,6 +19,11 @@ class ContentViewSet(ModelViewSet):
 
 
 class TopNewsViewSet(ModelViewSet):
-    queryset = TopNews.objects.all().order_by("-ordering")
+    queryset = TopNews.objects.all().order_by("ordering")
     serializer_class = TopNewsSerializer
     filterset_class = TopNewsFilter
+
+
+class AboutUsViewSet(ModelViewSet):
+    queryset = AboutUs.objects.all().order_by("ordering")
+    serializer_class = AboutUsSerializer

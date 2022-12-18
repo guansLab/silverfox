@@ -1,0 +1,14 @@
+ .profileImage {
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
+ }
+
+ .aboutUs {
+    display: flex;
+    padding: 3%;
+ }
+
+ .bio {
+    padding: 3%;
+ }
