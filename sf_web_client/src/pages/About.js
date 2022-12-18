@@ -39,9 +39,9 @@ function About(props) {
 
   return (
     <div className='pageBody'>
-        <ImageList sx={{ width: "400px", height:'300px' }} gap={10}>
+        <ImageList sx={{ width: "100%", height:'auto' }} cols={5} gap={10}>
         {profiles && profiles.map((profile) => (
-          <Card key={profile.id} onClick={() => nav("/about/" + profile.id)}>
+          <Card key={profile.id} onClick={() => nav("/about/" + profile.id)} sx={{height:'400px'}}>
             <ImageListItem sx={{height:'100% !important'}}>
               <img
               src={profile.picture}
