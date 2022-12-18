@@ -21,3 +21,7 @@
   .image:hover {
     cursor: pointer;
   }
+  
+  .MuiImageListItemBar-title{
+    font-size: small;
+  }

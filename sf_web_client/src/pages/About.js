@@ -1,14 +1,18 @@
 import './About.css';
 import { useEffect, useState } from 'react';
-import ButtonBase from '@mui/material/ButtonBase';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import { Card } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import axios from '../axios';
-import { Container } from 'reactstrap';
 
+
+const styles = theme => ({
+  imageListItemBar:{
+    fontSize:'0.7em',//Insert your required size
+  }
+});
 
 
 const ABOUT_US_URL = '/about-us/'
@@ -32,10 +36,6 @@ function About(props) {
   useEffect(() => {
     getProfiles();
   }, []);
-
-  const handleClick = (profile) => {
-    console.log(profile);
-  }
 
   return (
     <div className='pageBody'>

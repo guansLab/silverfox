@@ -80,7 +80,7 @@ class AboutUs(models.Model):
                                 null=True, blank=True)
     display_name = models.CharField(max_length=128, help_text=_("Name to be displayed"))
     bio = QuillField(blank=True, null=True, help_text=_("Personal Bio"))
-    title = models.CharField(max_length=128, help_text=_("Role played in the project or title"))
+    title = models.CharField(max_length=128, help_text=_("Role played in the project or title"), null=True, blank=True)
     ordering = models.SmallIntegerField(default=0, help_text=_("Order in which it has to be displayed, 1 means display"
                                                                " first"))
 
